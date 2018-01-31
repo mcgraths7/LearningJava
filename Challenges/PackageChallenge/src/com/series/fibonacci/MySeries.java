@@ -20,7 +20,7 @@ public class MySeries {
 			return 0;
 		} else if (index == 1) {
 			return 1;
-		} else {
+		}
 			long nMinusOne = 1;
 			long nMinusTwo = 0;
 			long fib = 0;
@@ -28,11 +28,7 @@ public class MySeries {
 				fib = (nMinusTwo + nMinusOne);
 				nMinusTwo = nMinusOne;
 				nMinusOne = fib;
-				return fib;
 			}
-			return -1;
-		}
+		return fib;
 	}
-	
-	
 }
