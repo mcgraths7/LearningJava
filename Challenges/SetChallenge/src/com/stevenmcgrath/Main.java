@@ -1,6 +1,15 @@
 package com.stevenmcgrath;
 
+import sun.security.provider.Sun;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class Main {
+	private static Map<String, HeavenlyBody> solarSystem = new HashMap<>();
+	private static Set<HeavenlyBody> planets = new HashSet<>();
 	        /*
         Modify the previous HeavenlyBody example so that the HeavenlyBody
         class also has a "bodyType" field. This field will store the
@@ -42,4 +51,59 @@ public class Main {
         6. Two bodies with the same name but different designations can be added to the same map,
         and can be retrieved from the map.
 */
+	
+	
+	public static void main(String[] args) {
+		HeavenlyBody planet = new Planet("Mercury", 88);
+		solarSystem.put(planet.getName(), planet);
+		planets.add(planet);
+		
+		HeavenlyBody sun = new Star("The Sun", 839500000);
+		solarSystem.put(sun.getName(),sun);
+		sun.addSatellite(planet);
+		
+		HeavenlyBody moon = new Moon("Luna", 28);
+		solarSystem.put(moon.getName(), moon);
+		sun.addSatellite(moon);
+		
+		planet = new Planet("Earth", 365);
+		solarSystem.put(planet.getName(), planet);
+		planet.addSatellite(moon);
+		sun.addSatellite(planet);
+		
+		HeavenlyBody comet = new Comet("Hailey", 27375);
+		solarSystem.put(comet.getName(), comet);
+		sun.addSatellite(comet);
+		
+		planet = new Planet("Jupiter", 12*365);
+		solarSystem.put(planet.getName(), planet);
+		sun.addSatellite(planet);
+		
+		moon = new Moon("Io", 2);
+		solarSystem.put(moon.getName(), moon);
+		planet.addSatellite(moon);
+		sun.addSatellite(moon);
+		
+		moon = new Moon("Europa", 5);
+		solarSystem.put(moon.getName(), moon);
+		planet.addSatellite(moon);
+		sun.addSatellite(moon);
+		
+		moon = new Moon("Ganymede", 7);
+		solarSystem.put(moon.getName(), moon);
+		planet.addSatellite(moon);
+		sun.addSatellite(moon);
+		
+		moon = new Moon("Callisto", 17);
+		solarSystem.put(moon.getName(), moon);
+		planet.addSatellite(moon);
+		sun.addSatellite(moon);
+		
+		comet = new Comet("Callisto", 29800);
+		solarSystem.put(comet.getName(), comet);
+		sun.addSatellite(comet);
+		
+		
+	}
+	
 }
