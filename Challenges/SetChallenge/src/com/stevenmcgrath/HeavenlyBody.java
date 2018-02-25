@@ -41,24 +41,25 @@ public class HeavenlyBody {
 	}
 	
 	@Override
-	public boolean equals(Object body) {
-		if (this == body) {
+	public final boolean equals(Object obj) {
+		if (this == obj) {
 			return true;
 		}
-		System.out.println("Object.getClass() is: " + body.getClass());
-		System.out.println("this.getClass() is: " + this.getClass());
-		if (body == null || body.getClass() != this.getClass()) {
-			return false;
+		if (obj instanceof HeavenlyBody) {
+			HeavenlyBody theObject = (HeavenlyBody) obj;
+			if (this.name.equals(theObject.getName())) {
+				return this.bodyType == theObject.getBodyType();
+			}
 		}
-		String bodyName = ((HeavenlyBody) body).getName();
-		return this.name.equals(bodyName);
+		return false;
 	}
 	
 	@Override
-	public int hashCode() {
-		System.out.println("hashCode() called");
-		return this.name.hashCode() + 85;
-		
+	public final int hashCode() {
+		return this.name.hashCode() + 85 + this.bodyType.hashCode();
 	}
-
+	
+	@Override
+	public String toString() { return this.name + ": " + this.bodyType + ", " + this.orbitalPeriod; }
+	
 }
